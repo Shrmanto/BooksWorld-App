@@ -1,0 +1,89 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;900&display=swap");
+
+* {
+    font-family: "Inter";
+    margin: 0;
+    padding: 0;
+    outline: none;
+    box-sizing: border-box;
+    border: none;
+}
+
+.card {
+    border: none;
+    border-radius: 0;
+    background-color: white;
+    padding: 10px 10px 10px 10px;
+}
+
+.img-brand {
+    border-radius: 10px;
+}
+
+.jdl-buku {
+    color: black;
+    margin-top: 0.5rem;
+    font-size: 18px;
+    font-weight: 700;
+}
+
+.prg {
+    font-size: 12px;
+    font-weight: 600;
+    color: rgba(0, 0, 0, 0.395);
+}
+
+.rating {
+    display: flex;
+    margin: 1px 0px 10px 0px;
+}
+
+.status h2 {
+    display: flex;
+    align-items: center;
+    padding: 6px 6px 6px 6px;
+    font-size: 10px;
+    font-weight: 600;
+    background-color: rgb(56, 198, 56);
+    color: white;
+    border-radius: 5px;
+}
+
+.status .btn {
+    background-color: #227c9d;
+}
+
+.status .btn:hover {
+    background-color: #0d5d7a;
+}
+
+.status .btn-2 {
+    margin-left: 3rem;
+    background-color: #e4c112;
+    border-radius: 10px;
+}
+
+.status .btn-2:hover {
+    background-color: #bc9f0d;
+}
+
+.btn h3 {
+    font-size: 6px;
+}
+
+.card:hover {
+    cursor: pointer;
+    box-shadow: 2px 2px 15px #00000055;
+}
+
+table thead {
+    background-color: #227c9d;
+    color: white;
+}
+
+tbody tr .badge {
+    color: white;
+    background-color: green;
+    padding: 8px;
+    border-radius: 20px;
+}

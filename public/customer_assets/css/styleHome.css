@@ -1,0 +1,11 @@
+.btn-cart .btn {
+    border-color: #227c9d;
+}
+
+.btn-cart .btn:hover {
+    background-color: #227c9d;
+}
+
+.navbar-nav .nav-item {
+    color: black;
+}
