@@ -18,7 +18,7 @@ class ListBukuController extends Controller
     {
         //
         $buku = Buku::with('kategori')->paginate(10);
-        return view('customer.listBuku.index', compact('buku'));
+        return view('peminjamMain.listBuku.index', compact('buku'));
     }
 
     /**

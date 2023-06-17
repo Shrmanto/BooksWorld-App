@@ -6,43 +6,41 @@
     <!-- <div class="card"> -->
         <h2 class="mb-3" style="font-weight: 600;">Daftar Kategori</h2>
         <!-- <div class="card-body"> -->
-            <a href="{{ route('kategori.create') }}" class="btn mb-3" style="background-color: #227c9d;">
-            <i class="fa-sharp fa-solid fa-plus" style="color: #ffffff;"></i>
+            <a href="{{ route('kategori.create') }}" class="btn btn btn-outline-primary mb-3 shadow-sm">
+            <i class="fa-sharp fa-solid fa-plus"></i>
             </a>
 
             @if (session('success'))
                 <div class="alert alert-success">{{ session('success') }}</div>
             @endif
 
-            <table class="table table-striped">
-                <thead>
-                    <tr>
-                        <th>No.</th>
-                        <th>Jenis Kategori</th>
-                        <th>Aksi</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    @foreach ($kategori as $kg)
+            <div class="card shadow-sm">
+                <table class="table table-striped">
+                    <thead class="table-dark" style="background-color: #227c9d;">
                         <tr>
-                            <td>{{ $kg->id }}</td>
-                            <td>{{ $kg->jenis_kategori }}</td>
-                            <td>
-                                <a href="{{ route('kategori.edit', $kg->id) }}" class="btn btn-sm btn-success">
-                                <i class="fa-solid fa-pen-to-square" style="color: #ffffff;"></i>
-                                </a>
-                                <form action="#" method="POST" class="d-inline">
-                                    @csrf
-                                    @method('DELETE')
-                                    <button type="submit" class="btn btn-sm btn-danger" onclick="return confirm('Anda yakin ingin menghapus data ini?')">
-                                    <i class="fa-solid fa-trash" style="color: #ffffff;"></i>
-                                    </button>
-                                </form>
-                            </td>
+                            <th>No.</th>
+                            <th>Jenis Kategori</th>
+                            <th>Aksi</th>
                         </tr>
-                    @endforeach
-                </tbody>
-            </table>
+                    </thead>
+                    <tbody>
+                        @foreach ($kategori as $index => $kg)
+                            <tr>
+                                <td>{{ $index + 1 }}</td>
+                                <td>{{ $kg->jenis_kategori }}</td>
+                                <td>
+                                    <a href="{{ route('kategori.edit', $kg->id) }}" class="btn btn-sm btn-success">
+                                    <i class="fa-solid fa-pen-to-square" style="color: #ffffff;"></i>
+                                    </a>
+                                    <a href="{{ route('kategori.delete', $kg->id) }}" class="btn btn-sm btn-danger" onclick="return confirm('Anda yakin ingin menghapus data ini?')">
+                                        <i class="fa-solid fa-trash" style="color: #ffffff;"></i>
+                                    </a>
+                                </td>
+                            </tr>
+                        @endforeach
+                    </tbody>
+                </table>
+            </div>
 
 
         <!-- </div> -->

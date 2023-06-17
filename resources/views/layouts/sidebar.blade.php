@@ -29,7 +29,7 @@
       <span>Admin</span></a>
   </li>
   <li class="nav-item">
-    <a class="nav-link" href="#">
+    <a class="nav-link" href="{{route('peminjam')}}">
     <i class="fa-solid fa-users" style="color: #ffffff;"></i>
       <span>Peminjam</span></a>
   </li>

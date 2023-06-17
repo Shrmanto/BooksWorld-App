@@ -27,7 +27,7 @@
       <span>List Buku</span></a>
     </li>
   <li class="nav-item">
-    <a class="nav-link" href="#">
+    <a class="nav-link" href="{{route('keranjang')}}">
     <i class="fa-sharp fa-solid fa-basket-shopping" style="color: #ffffff;"></i>
       <span>Keranjang</span></a>
   </li>

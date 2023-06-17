@@ -1,4 +1,4 @@
-@extends('customer.home.index')
+@extends('peminjamMain.home.index')
 
 @section('content')
 <div id="main" class="mx-auto">

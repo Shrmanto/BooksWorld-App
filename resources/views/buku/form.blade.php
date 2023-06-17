@@ -11,9 +11,9 @@
     <i class="fa-sharp fa-solid fa-arrow-left" style="color: #ffffff;"></i>
     </a>
 
-    <!-- <div class="card"> -->
-        <h2 class="mb-3" style="font-weight: 600;">Tambah Buku Baru</h2>
-        <!-- <div class="card-body"> -->
+    <div class="card shadow-sm">
+        <div class="card-body">
+            <h2 class="card-title text-center mb-3" style="font-weight: 600;">Tambah Buku Baru</h2>
             @if ($errors->any())
                 <div class="alert alert-danger">
                     <ul>
@@ -90,8 +90,8 @@
                 </div>
                 <button type="submit" class="btn btn-primary">Simpan</button>
             </form>
-        <!-- </div> -->
-    <!-- </div> -->
+        </div>
+    </div>
 
 </div>
 @endsection

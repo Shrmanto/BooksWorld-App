@@ -8,37 +8,29 @@
         </a>
     </header>
 
-    <h2 class="mb-3" style="font-weight: 600;">Daftar Admin</h2>
+    <h2 class="mb-3 text-center" style="font-weight: 600;">Daftar Admin</h2>
     <!-- <a href="#" class="btn btn-primary mb-3">+</a> -->
-
-    <table class="table">
-        <thead class="table-dark" style="background-color: #227c9d;">
-            <tr>
-                <th>No</th>
-                <th>Nama</th>
-                <th>Email</th>
-                <!-- <th>Action</th> -->
-            </tr>
-        </thead>
-        <tbody>
-            @foreach ($user as $us)
+    <div class="card shadow-sm">
+        <table class="table">
+            <thead class="table-dark" style="background-color: #227c9d;">
                 <tr>
-                    <td>{{ $us->id }}</td>
-                    <td>{{ $us->name }}</td>
-                    <td>{{ $us->email }}</td>
-                    <!-- <td>
-                        <a href="#" class="btn btn-info">Lihat</a>
-                        <a href="#" class="btn btn-warning">Ubah</a>
-                        <form action="#" method="POST" style="display: inline;">
-                            @csrf
-                            @method('DELETE')
-                            <button type="submit" class="btn btn-danger">Hapus</button>
-                        </form>
-                    </td> -->
+                    <th>No</th>
+                    <th>Nama</th>
+                    <th>Email</th>
+                    <!-- <th>Action</th> -->
                 </tr>
-            @endforeach
-        </tbody>
-    </table>
+            </thead>
+            <tbody>
+                @foreach ($user as $us)
+                    <tr>
+                        <td>{{ $us->id }}</td>
+                        <td>{{ $us->name }}</td>
+                        <td>{{ $us->email }}</td>
+                    </tr>
+                @endforeach
+            </tbody>
+        </table>
+    </div>
 
 
 

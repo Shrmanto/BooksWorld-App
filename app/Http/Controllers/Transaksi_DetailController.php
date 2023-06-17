@@ -2,12 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Peminjam;
-use App\Models\User;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
 
-class PeminjamController extends Controller
+class Transaksi_DetailController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,12 +14,6 @@ class PeminjamController extends Controller
     public function index()
     {
         //
-        $peminjam = DB::table('peminjam')
-                ->join('users', 'peminjam.user_id', '=', 'users.id')
-                ->select('peminjam.id', 'users.name', 'users.email', 'peminjam.alamat', 'peminjam.no_handphone')
-                ->paginate(5);
-
-        return view('peminjam.index', compact('peminjam'));
     }
 
     /**
@@ -44,13 +35,6 @@ class PeminjamController extends Controller
     public function store(Request $request)
     {
         //
-        $peminjam = new Peminjam();
-        $peminjam->name = $request->name;
-        $peminjam->email = $request->email;
-        $peminjam->alamat = $request->alamat;
-        $peminjam->no_handphone = $request->no_handphone;
-        $peminjam->password = bcrypt($request->password);
-        $peminjam->save();
     }
 
     /**

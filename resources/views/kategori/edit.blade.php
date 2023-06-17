@@ -10,28 +10,32 @@
     <a href="{{ route('kategori') }}" class="btn mb-3" style="background-color: #227c9d;">
     <i class="fa-sharp fa-solid fa-arrow-left" style="color: #ffffff;"></i>
     </a>
+    <div class="card shadow-sm">
+        <div class="card-body">
+            <div class="card-title h2 mb-3 text-center" style="font-weight: 600;">Edit Kategori</div>
+        
+                @if ($errors->any())
+                    <div class="alert alert-danger">
+                        <ul>
+                            @foreach ($errors->all() as $error)
+                                <li>{{ $error }}</li>
+                            @endforeach
+                        </ul>
+                    </div>
+                @endif
+        
+                <form action="{{ route('kategori.update', $kategori->id) }}" method="POST">
+                    @csrf
+                    @method('PUT')
+                    <div class="form-group">
+                        <label for="jenis_kategori">Jenis Kategori</label>
+                        <input type="text" name="jenis_kategori" id="jenis_kategori" class="form-control" value="{{ $kategori->jenis_kategori }}">
+                    </div>
+                    <button type="submit" class="btn btn-primary">Simpan</button>
+                </form>
+        </div>
+    </div>
 
-    <div class="card-header">Edit Kategori</div>
-
-        @if ($errors->any())
-            <div class="alert alert-danger">
-                <ul>
-                    @foreach ($errors->all() as $error)
-                        <li>{{ $error }}</li>
-                    @endforeach
-                </ul>
-            </div>
-        @endif
-
-        <form action="{{ route('kategori.update', $kategori->id) }}" method="POST">
-            @csrf
-            @method('PUT')
-            <div class="form-group">
-                <label for="jenis_kategori">Jenis Kategori</label>
-                <input type="text" name="jenis_kategori" id="jenis_kategori" class="form-control" value="{{ $kategori->jenis_kategori }}">
-            </div>
-            <button type="submit" class="btn btn-primary">Simpan</button>
-        </form>
 
 
     <!-- <footer>

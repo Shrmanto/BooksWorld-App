@@ -11,9 +11,9 @@
     <i class="fa-sharp fa-solid fa-arrow-left" style="color: #ffffff;"></i>
     </a>
 
-    <!-- <div class="card"> -->
-        <div class="h2 mb-3" style="font-weight: 600;">Edit Buku</div>
-        <!-- <div class="card-body"> -->
+    <div class="card shadow-sm">
+        <div class="card-body">
+            <div class="card-title h2 mb-3 text-center" style="font-weight: 600;">Edit Buku</div>
             @if ($errors->any())
                 <div class="alert alert-danger">
                     <ul>
@@ -85,9 +85,9 @@
                     <label for="sinopsis">Sinopsis</label>
                     <textarea class="form-control" id="sinopsis" name="sinopsis" rows="5" required>{{ isset($buku) ? $buku->sinopsis : old('sinopsis') }}</textarea>
                 </div>
-                <button type="submit" class="btn btn-primary mb-5">{{ isset($buku) ? 'Update' : 'Simpan' }}</button>
+                <button type="submit" class="btn btn-primary">{{ isset($buku) ? 'Update' : 'Simpan' }}</button>
             </form>
-        <!-- </div> -->
-    <!-- </div> -->
+        </div>
+    </div>
 </div>
 @endsection
