@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>Zay Shop - About Page</title>
+    <title>BooksWorld - Landing Page</title>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
 
@@ -26,23 +26,23 @@
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
-        <div class="collapse navbar-collapse" id="navbarNav">
-          <ul class="navbar-nav d-flex justify-content-center">
+        <div class="collapse navbar-collapse d-flex justify-content-end" id="navbarNav">
+          <ul class="navbar-nav">
             <li class="nav-item">
-              <a href="#hero" class="nav-link text-white">Home</a>
+              <a href="#hero" class="nav-link">Home</a>
             </li>
             <li class="nav-item">
-              <a href="#about" class="nav-link text-white">Book</a>
+              <a href="#about" class="nav-link">Book</a>
             </li>
+            <div class="nav-item">
+              <a href="{{ route('register') }}" class="text-decoration-none">
+                  <button type="button" class="btn button-1">Daftar</button>
+              </a>
+              <a href="{{ route('login') }}" class="text-decoration-none">
+                  <button type="button" class="btn button-2">Masuk</button>
+              </a>
+            </div>
           </ul>
-          <div class="get ms-auto">
-            <a href="{{ route('register') }}" class="text-decoration-none">
-                <button type="button" class="btn button-1">Daftar</button>
-            </a>
-            <a href="{{ route('login') }}" class="text-decoration-none">
-                <button type="button" class="btn button-2">Masuk</button>
-            </a>
-          </div>
         </div>
       </div>
     </nav>
@@ -117,11 +117,13 @@
                 </div>
                     <div class="">
                         <p class="mb-1">{{ $bk->pengarang }}</p>
-                        @if ($bk->jumlah > 0)
+                        @if (Auth::check()) <!-- Periksa apakah pengguna sudah login -->
                             <form action="{{ route('addtocart', $bk->id) }}" method="POST">
-                            @csrf
-                            <button type="submit" class="btn btn-primary">Add to Cart <i class="fa-sharp fa-solid fa-basket-shopping"></i></button>
+                                @csrf
+                                <button type="submit" class="btn btn-primary">Add to Cart <i class="fa-sharp fa-solid fa-basket-shopping"></i></button>
                             </form>
+                        @else
+                            <a href="{{ route('login') }}" class="btn btn-primary">Add to Cart <i class="fa-sharp fa-solid fa-basket-shopping"></i></a> <!-- Alihkan pengguna ke halaman login -->
                         @endif
                     </div>
                 </div>
@@ -170,7 +172,7 @@
     <script src="{{asset('assets/js/jquery-1.11.0.min.js')}}"></script>
     <script src="{{asset('assets/js/jquery-migrate-1.2.1.min.js')}}"></script>
     <script src="{{asset('assets/js/bootstrap.bundle.min.js')}}"></script>
-    <script src="{{asset('assets/js/templatemo.js')}}"></script>
+    <!-- <script src="{{asset('assets/js/templatemo.js')}}"></script> -->
     <script src="{{asset('assets/js/custom.js')}}"></script>
 
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>

@@ -1,113 +1,103 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Laravel 10 Custom Login and Registration - Register Page</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
-</head>
-<body>
-<div class="container">
-        <div class="row justify-content-center">
-            <div class="col-md-8">
-                <div class="card">
-                    <div class="card-header">{{ __('Register') }}</div>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Daftar to BooksWorld</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous" />
+    <link rel="stylesheet" href="{{asset('/login_regist/style.css')}}" />
+  </head>
+  <body>
+    <section class="">
+      <!-- Jumbotron -->
+      <div class="text-center text-lg-start" style="background-color: hsl(0, 0%, 96%); padding-top: 80px; padding-bottom: 80px">
+        <div class="container">
+          <div class="row gx-lg-5 align-items-center">
+            <div class="col-lg-6 mb-5 mb-lg-0">
+              <div class="card shadow">
+                <div class="card-body p-5 text-center">
+                  <h3 class="mb-5">Daftar</h3>
+                  <form action="{{ route('register-user') }}" method="POST">
+                  @csrf
+                  <div class="form-outline mb-4">
+                    <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" placeholder="name" name="name" value="{{ old('name') }}" required autocomplete="name" autofocus>
 
-                    <div class="card-body">
-                        <form method="POST" action="{{ route('register-user') }}">
-                            @csrf
+                    @error('name')
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                    @enderror
+                  </div>
+                  <div class="form-outline mb-4">
+                    <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" placeholder="email" name="email" value="{{ old('email') }}" required autocomplete="email">
 
-                            <div class="form-group row">
-                                <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Name') }}</label>
+                    @error('email')
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                    @enderror
+                  </div>
+                  <div class="row">
+                    <div class="col-lg-6">
+                      <div class="form-outline mb-4">
+                        <input id="alamat" type="alamat" class="form-control @error('alamat') is-invalid @enderror" placeholder="alamat" name="alamat" value="{{ old('alamat') }}" required autocomplete="alamat">
 
-                                <div class="col-md-6">
-                                    <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="name" autofocus>
-
-                                    @error('name')
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $message }}</strong>
-                                        </span>
-                                    @enderror
-                                </div>
-                            </div>
-
-                            <div class="form-group row">
-                                <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('E-Mail Address') }}</label>
-
-                                <div class="col-md-6">
-                                    <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email">
-
-                                    @error('email')
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $message }}</strong>
-                                        </span>
-                                    @enderror
-                                </div>
-                            </div>
-
-                            <div class="form-group row">
-                                <label for="alamat" class="col-md-4 col-form-label text-md-right">{{ __('Address') }}</label>
-
-                                <div class="col-md-6">
-                                    <input id="alamat" type="alamat" class="form-control @error('alamat') is-invalid @enderror" name="alamat" value="{{ old('alamat') }}" required autocomplete="alamat">
-
-                                    @error('alamat')
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $message }}</strong>
-                                        </span>
-                                    @enderror
-                                </div>
-                            </div>
-
-                            <div class="form-group row">
-                                <label for="no_handphone" class="col-md-4 col-form-label text-md-right">{{ __('No. Hp') }}</label>
-
-                                <div class="col-md-6">
-                                    <input id="no_handphone" type="no_handphone" class="form-control @error('no_handphone') is-invalid @enderror" name="no_handphone" value="{{ old('no_handphone') }}" required autocomplete="no_handphone">
-
-                                    @error('no_handphone')
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $message }}</strong>
-                                        </span>
-                                    @enderror
-                                </div>
-                            </div>
-
-                            <div class="form-group row">
-                                <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Password') }}</label>
-
-                                <div class="col-md-6">
-                                    <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password">
-
-                                    @error('password')
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $message }}</strong>
-                                        </span>
-                                    @enderror
-                                </div>
-                            </div>
-
-                            <div class="form-group row">
-                                <label for="password-confirm" class="col-md-4 col-form-label text-md-right">{{ __('Confirm Password') }}</label>
-
-                                <div class="col-md-6">
-                                    <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password">
-                                </div>
-                            </div>
-
-                            <div class="form-group row mb-0">
-                                <div class="col-md-6 offset-md-4">
-                                    <button type="submit" class="btn btn-primary">
-                                        {{ __('Register') }}
-                                    </button>
-                                </div>
-                            </div>
-                        </form>
+                        @error('alamat')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                        @enderror
+                      </div>
                     </div>
+                    <div class="col-lg-6">
+                      <div class="form-outline mb-4">
+                        <input id="no_handphone" type="no_handphone" class="form-control @error('no_handphone') is-invalid @enderror" placeholder="no. hp" name="no_handphone" value="{{ old('no_handphone') }}" required autocomplete="no_handphone">
+
+                        @error('no_handphone')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                        @enderror
+                      </div>
+                    </div>
+                  </div>
+                  <div class="form-outline mb-4">
+                    <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" placeholder="password" name="password" required autocomplete="new-password">
+
+                    @error('password')
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                    @enderror
+                  </div>
+                  <div class="form-outline mb-4">
+                    <input id="password-confirm" type="password" class="form-control" name="password_confirmation" placeholder="confirm password" required autocomplete="new-password">
+                  </div>
+
+                  <button class="btn" type="submit">Daftar</button>
+
+                  <div class="text-center mt-3">
+                    <a class="small text-decoration-none" href="#" style="color: #227c9d; font-weight: 500">Punya Akun!</a>
+                  </div>
+                  </form>
                 </div>
+              </div>
             </div>
+            <div class="col-lg-6 mb-5 mb-lg-0">
+              <h1 class="my-3 display-3 fw-bold ls-tight">
+                Welcome To <br />
+                <span style="color: #227c9d">Books World</span>
+              </h1>
+              <p style="color: hsl(217, 10%, 50.8%)">
+                Books World adalah sebuah platform yang berkaitan dengan buku dan literatur. Di sini, pengguna dapat menemukan berbagai jenis buku, membaca ulasan, dan mendapatkan rekomendasi. Books World adalah tempat bagi para pecinta buku untuk
+                terhubung dan mengeksplorasi dunia literatur secara online.
+              </p>
+            </div>
+          </div>
         </div>
-    </div>
-</body>
+      </div>
+      <!-- Jumbotron -->
+    </section>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
+  </body>
 </html>

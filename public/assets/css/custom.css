@@ -1,53 +1,61 @@
 #hero {
-  padding: 1.4rem 7%;
+    padding: 1.4rem 7%;
 }
 
 #service {
-  padding: 1.4rem 7%;
+    padding: 1.4rem 7%;
 }
 
 #book {
-  padding: 1.4rem 7%;
+    padding: 1.4rem 7%;
 }
 
 .button-1,
 .button-2,
 .button-3 {
-  border-radius: 0px;
-  padding: 5px 20px 5px 20px;
-  color: #227c9d;
-  background-color: #ffffff;
+    border-radius: 0px;
+    padding: 5px 20px 5px 20px;
+    color: #227c9d;
+    background-color: #ffffff;
 }
 .button-1:hover {
-  color: #ffffff;
-  background-color: #227c9d;
+    color: #ffffff;
+    background-color: #227c9d;
 }
 
 .button-2 {
-  border-radius: 0px;
-  padding: 5px 20px 5px 20px;
-  color: #ffffff;
-  background-color: #227c9d;
+    border-radius: 0px;
+    padding: 5px 20px 5px 20px;
+    color: #ffffff;
+    background-color: #227c9d;
 }
 .button-2:hover {
-  color: #227c9d;
-  background-color: white;
+    color: #227c9d;
+    background-color: white;
 }
 
 .navbar {
-  padding: 1.4rem 7%;
+    padding: 1.4rem 7%;
 }
 
 .navbar-brand {
-  font-size: 1.4rem;
-  font-weight: 600;
+    font-size: 1.4rem;
+    font-weight: 600;
 }
 
-.navbar-nav .nav-item {
-  font-size: 20px;
-  font-weight: 400;
+.navbar-nav .nav-item .nav-link {
+    font-size: 20px;
+    font-weight: 400;
+    margin-right: 1rem;
+    color: #ffffff;
+}
+
+.navbar-nav .nav-item .nav-link:hover {
+    font-size: 20px;
+    font-weight: 400;
+    color: #227c9d;
 }
 
 footer {
-  padding: 1.4rem 7%;
+    padding: 1.4rem 7%;
 }
