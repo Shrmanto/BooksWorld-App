@@ -76,3 +76,5 @@ Route::group(['prefix' => 'cart'], function () {
     Route::post('/pinjam', [App\Http\Controllers\CartController::class, 'pinjam'])->name('pinjam');
 });
 
+
+
