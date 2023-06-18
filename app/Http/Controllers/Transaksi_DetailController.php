@@ -2,7 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Buku;
+use App\Models\Transaksi;
+use App\Models\transaksi_detail;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class Transaksi_DetailController extends Controller
 {
@@ -13,8 +18,16 @@ class Transaksi_DetailController extends Controller
      */
     public function index()
     {
-        //
+        $transaksi_detail = DB::table('transaksi_detail')
+            ->select('transaksi_detail.id', 'transaksi_detail.jumlah_pinjam', 'transaksi.tanggal_pinjam', 'transaksi.tanggal_kembali', 'transaksi.status','buku.judul_buku', 'users.name')
+            ->join('transaksi', 'transaksi_detail.transaksi_id', 'transaksi.id')
+            ->join('buku', 'transaksi_detail.buku_id', 'buku.id')
+            ->join('users', 'transaksi.user_id', 'users.id')
+            ->get();
+    
+        return view('peminjaman.index', compact('transaksi_detail'));
     }
+    
 
     /**
      * Show the form for creating a new resource.
@@ -43,10 +56,19 @@ class Transaksi_DetailController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function showDetail($id)
     {
-        //
+        $transaksi_detail = DB::table('transaksi_detail')
+            ->select('transaksi_detail.id', 'transaksi_detail.jumlah_pinjam', 'transaksi.tanggal_pinjam', 'transaksi.tanggal_kembali', 'transaksi.status', 'buku.judul_buku', 'users.name')
+            ->join('transaksi', 'transaksi_detail.transaksi_id', 'transaksi.id')
+            ->join('buku', 'transaksi_detail.buku_id', 'buku.id')
+            ->join('users', 'transaksi.user_id', 'users.id')
+            ->where('transaksi.id', $id)
+            ->first();
+
+        return view('peminjaman.detail', compact('transaksi_detail'));
     }
+
 
     /**
      * Show the form for editing the specified resource.
@@ -68,7 +90,23 @@ class Transaksi_DetailController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $transaksi = Transaksi::findOrFail($id);
+    
+        if ($transaksi->status != 'ACC') {
+            $transaksi->status = 'ACC';
+            
+            // Mengatur tanggal kembali 3 hari setelah tanggal pinjam
+            $tanggalPinjam = $transaksi->tanggal_pinjam;
+            $tanggalKembali = date('Y-m-d', strtotime($tanggalPinjam. ' + 3 days'));
+            
+            $transaksi->tanggal_kembali = $tanggalKembali;
+            
+            $transaksi->save();
+            
+            return redirect()->back()->with('success', 'Berhasil mengubah status menjadi ACC.');
+        }
+        
+        return redirect()->back()->with('error', 'Tidak dapat mengubah status menjadi ACC.');
     }
 
     /**

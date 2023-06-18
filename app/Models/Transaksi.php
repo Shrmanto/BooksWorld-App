@@ -16,8 +16,20 @@ class Transaksi extends Model
         'user_id'
     ];
 
+    // Definisikan relasi dengan model Buku
+    public function buku()
+    {
+        return $this->belongsTo(Buku::class);
+    }
+
+    // Definisikan relasi dengan model User
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
+
     public function transaksi_detail()
     {
-        return $this->hasMany(Transaksi_Detail::class);
+        return $this->hasMany(transaksi_detail::class);
     }
 }

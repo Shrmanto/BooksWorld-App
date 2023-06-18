@@ -1,5 +1,7 @@
 <?php
 
+use App\Models\Buku;
+use App\Models\Status;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 
@@ -15,8 +17,12 @@ use Illuminate\Support\Facades\Auth;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    $buku = Buku::all();
+    $status = Status::all();
+    return view('welcome', compact('buku', 'status'));
 })->name('welcome');
+// Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('welcome');
+
 
 Auth::routes();
 // Route::post('/login', [App\Http\Controllers\LoginController::class, 'redirect'])->name('login-user');
@@ -47,6 +53,11 @@ Route::get('/buku/{id}/edit', [App\Http\Controllers\BukuController::class, 'edit
 Route::put('/buku/{id}', [App\Http\Controllers\BukuController::class, 'update'])->name('buku.update');
 Route::get('/buku/{id}/delete', [App\Http\Controllers\BukuController::class, 'destroy'])->name('buku.delete');
 
+// Lihat Transaksi Peminjaman
+Route::get('/peminjaman', [App\Http\Controllers\Transaksi_DetailController::class, 'index'])->name('peminjaman');
+// ACC Peminjaman
+Route::get('/peminjaman/{id}/update', [App\Http\Controllers\Transaksi_DetailController::class, 'update'])->name('peminjaman.update');
+Route::get('/detailpeminjaman/{id}/detail', [App\Http\Controllers\Transaksi_DetailController::class, 'showDetail'])->name('detailpeminjaman.detail');
 
 // User
 Route::middleware('role:user')->get('/home', function () {
@@ -57,6 +68,7 @@ Route::middleware('role:user')->get('/home', function () {
 Route::get('/Listbuku', [App\Http\Controllers\ListBukuController::class, 'index'])->name('Listbuku');
 Route::get('/detailbuku/{id}', [App\Http\Controllers\ListBukuController::class, 'detail'])->name('detailbuku');
 
+// Kerranjang
 Route::group(['prefix' => 'cart'], function () {
     Route::get('/keranjang', [App\Http\Controllers\CartController::class, 'index'])->name('keranjang');
     Route::post('/addtocart/{id}', [App\Http\Controllers\CartController::class, 'addToCart'])->name('addtocart');

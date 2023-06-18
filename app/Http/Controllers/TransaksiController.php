@@ -3,10 +3,12 @@
 namespace App\Http\Controllers;
 
 use App\Models\Buku;
+use App\Models\User;
 use App\Models\Transaksi;
 use App\Models\transaksi_detail;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class TransaksiController extends Controller
 {
@@ -17,7 +19,9 @@ class TransaksiController extends Controller
      */
     public function index()
     {
-        //
+        $transaksi = Transaksi::with('buku', 'user')->get();
+
+        return view('peminjaman.detail', compact('transaksi'));
     }
 
     public function cart()
@@ -111,10 +115,14 @@ class TransaksiController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
-    {
-        //
-    }
+    // public function show()
+    // {
+    //     $transaksi = DB::table('transaksi')
+    //                 ->select('transaksi.id', 'transaksi.tanggal_pinjam', 'transaksi.tanggal_kembali', 'transaksi.status','buku.judul_buku')
+    //                 ->join('buku', 'transaksi.buku_id', 'buku.id')
+    //                 ->get();
+    //     return view('peminjaman.detail', compact('transaksi'));
+    // }
 
     /**
      * Show the form for editing the specified resource.

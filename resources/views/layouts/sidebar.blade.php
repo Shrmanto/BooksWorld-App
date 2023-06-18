@@ -52,14 +52,9 @@
       <hr class="sidebar-divider my-0">
       
   <li class="nav-item">
-    <a class="nav-link" href="#">
+    <a class="nav-link" href="{{ route('peminjaman') }}">
       <i class="fa-solid fa-receipt" style="color: #ffffff;"></i>
-    <span>Transaksi</span></a>
-  </li>
-  <li class="nav-item">
-    <a class="nav-link" href="#">
-    <i class="fa-sharp fa-solid fa-list" style="color: #fafafa;"></i>
-    <span>List Buku</span></a>
+    <span>Peminjaman</span></a>
   </li>
 
   <!-- Divider -->

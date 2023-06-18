@@ -31,4 +31,9 @@ class Buku extends Model
     {
         return $this->belongsTo(Status::class);
     }
+
+    public function transaksi()
+    {
+        return $this->hasMany(Transaksi::class);
+    }
 }

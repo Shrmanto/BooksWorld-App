@@ -18,7 +18,7 @@ return new class extends Migration
             $table->date('tanggal_pinjam')->default(now());
             $table->date('tanggal_kembali')->nullable();
             $table->unsignedBigInteger('user_id');
-            $table->enum('status', ['ACC', 'Menunggu ACC'])->default('Menunggu ACC');
+            $table->enum('status', ['ACC', 'Menunggu ACC']);
             $table->timestamps();
 
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');

@@ -76,6 +76,10 @@ class CartController extends Controller
             $detailTransaksi->jumlah_pinjam = $item['quantity'];
             // Tambahkan logika lainnya sesuai kebutuhan, misalnya harga, status peminjaman, dll.
             $detailTransaksi->save();
+
+            // mengurangi stok buku
+            $buku->jumlah -= $item['quantity'];
+            $buku->save();
         }
     
         // Mengosongkan keranjang setelah peminjaman berhasil
