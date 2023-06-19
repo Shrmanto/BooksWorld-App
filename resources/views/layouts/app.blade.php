@@ -34,20 +34,20 @@
     <div id="content-wrapper" class="d-flex flex-column">
 
     <!-- Main Content -->
-    <div id="content">
+      <div id="content">
 
-        <!-- Topbar -->
-        @include('layouts.navbar')
-        <!-- End of Topbar -->
+          <!-- Topbar -->
+          @include('layouts.navbar')
+          <!-- End of Topbar -->
 
-        <!-- Begin Page Content -->
-        <div class="container-fluid">
-          @yield('content')
-        </div>
-        <!-- /.container-fluid -->
+          <!-- Begin Page Content -->
+          <div class="container-fluid">
+            @yield('content')
+          </div>
+          <!-- /.container-fluid -->
 
-    </div>
-    <!-- End of Main Content -->
+      </div>
+      <!-- End of Main Content -->
   
       <!-- Footer -->
       <!-- End of Footer -->

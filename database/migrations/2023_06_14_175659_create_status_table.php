@@ -15,7 +15,7 @@ return new class extends Migration
     {
         Schema::create('status', function (Blueprint $table) {
             $table->id();
-            $table->enum('status', ['tersedia', 'stok habis']);
+            $table->enum('status', ['tersedia', 'stok habis'])->default('tersedia');
             $table->timestamps();
         });
     }
