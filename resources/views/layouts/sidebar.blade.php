@@ -2,10 +2,10 @@
   
   <!-- Sidebar - Brand -->
   <a class="sidebar-brand d-flex align-items-center justify-content-center" href="#">
-    <div class="sidebar-brand-icon rotate-n-15">
-      <i class="fas fa-laugh-wink"></i>
+    <div class="sidebar-brand-icon">
+      <img src="{{asset('assets/img/logo.png')}}" width="70%" alt="">
     </div>
-    <div class="sidebar-brand-text mx-3">BooksWorld</div>
+    <div class="sidebar-brand-text" style="margin-right: 1rem;">BooksWorld</div>
   </a>
   
   <!-- Divider -->
@@ -13,7 +13,7 @@
   
   <!-- Nav Item - Dashboard -->
   <li class="nav-item">
-    <a class="nav-link" href="#">
+    <a class="nav-link" href="{{ route('dashboard') }}">
     <i class="fa-solid fa-gauge" style="color: #ffffff;"></i>
       <span>Dashboard</span></a>
   </li>
@@ -23,11 +23,11 @@
   <!-- <p class="text-muted nav-heading mb-0 mx-auto mt-3">
     <span style="color: #ffffff;">Users</span>
   </p> -->
-  <li class="nav-item">
+  <!-- <li class="nav-item">
     <a class="nav-link" href="{{route('admin')}}">
     <i class="fa-solid fa-user" style="color: #ffffff;"></i>
       <span>Admin</span></a>
-  </li>
+  </li> -->
   <li class="nav-item">
     <a class="nav-link" href="{{route('peminjam')}}">
     <i class="fa-solid fa-users" style="color: #ffffff;"></i>
@@ -52,7 +52,7 @@
       <hr class="sidebar-divider my-0">
       
   <li class="nav-item">
-    <a class="nav-link" href="{{ route('peminjaman') }}">
+    <a class="nav-link" href="{{ route('peminjamanAdmin') }}">
       <i class="fa-solid fa-receipt" style="color: #ffffff;"></i>
     <span>Peminjaman</span></a>
   </li>

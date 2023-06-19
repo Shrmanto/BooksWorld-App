@@ -1,11 +1,11 @@
 <ul class="navbar-nav sidebar sidebar-dark accordion" id="accordionSidebar" style="background-color: #227C9D;">
   
   <!-- Sidebar - Brand -->
-  <a class="sidebar-brand d-flex align-items-center justify-content-center" href="{{route('dashhome')}}">
-    <div class="sidebar-brand-icon rotate-n-15">
-      <i class="fas fa-laugh-wink"></i>
+  <a class="sidebar-brand d-flex align-items-center justify-content-center" href="#">
+    <div class="sidebar-brand-icon">
+    <img src="{{asset('assets/img/logo.png')}}" width="70%" alt="">
     </div>
-    <div class="sidebar-brand-text mx-3">BooksWorld</div>
+    <div class="sidebar-brand-text" style="margin-right: 1rem;">BooksWorld</div>
   </a>
   
   <!-- Divider -->
@@ -13,7 +13,7 @@
   
   <!-- Nav Item - Dashboard -->
   <li class="nav-item">
-    <a class="nav-link" href="{{route('dashhome')}}">
+    <a class="nav-link" href="{{ route('home') }}">
     <i class="fa-solid fa-gauge" style="color: #ffffff;"></i>
       <span>Dashboard</span></a>
   </li>
@@ -32,9 +32,9 @@
       <span>Keranjang</span></a>
   </li>
   <li class="nav-item">
-    <a class="nav-link" href="#">
+    <a class="nav-link" href="{{route('peminjamanUser')}}">
       <i class="fa-solid fa-receipt" style="color: #ffffff;"></i>
-    <span>Transaksi</span></a>
+    <span>Peminjaman</span></a>
   </li>
     
   <!-- Divider -->

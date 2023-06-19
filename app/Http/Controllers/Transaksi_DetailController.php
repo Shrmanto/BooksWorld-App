@@ -27,6 +27,20 @@ class Transaksi_DetailController extends Controller
     
         return view('peminjaman.index', compact('transaksi_detail'));
     }
+
+    public function peminjaman()
+    {
+        $userId = auth()->user()->id;
+        $transaksi_detail = DB::table('transaksi_detail')
+            ->select('transaksi_detail.id', 'transaksi_detail.jumlah_pinjam', 'transaksi.tanggal_pinjam', 'transaksi.tanggal_kembali', 'transaksi.status','buku.judul_buku', 'users.name')
+            ->join('transaksi', 'transaksi_detail.transaksi_id', 'transaksi.id')
+            ->join('buku', 'transaksi_detail.buku_id', 'buku.id')
+            ->join('users', 'transaksi.user_id', 'users.id')
+            ->where('user_id', $userId)
+            ->get();
+    
+        return view('peminjamMain.peminjaman.index', compact('transaksi_detail'));
+    }
     
 
     /**

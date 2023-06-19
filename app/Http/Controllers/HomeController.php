@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Buku;
+use App\Models\Peminjam;
+use App\Models\transaksi_detail;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -24,7 +26,8 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $buku = Buku::all();
-        return view('welcome', compact('buku'));
+        $peminjam = Peminjam::count();
+        $PeminjamanBuku = transaksi_detail::count();
+        return view('home', compact('peminjam', 'PeminjamanBuku'));
     }
 }

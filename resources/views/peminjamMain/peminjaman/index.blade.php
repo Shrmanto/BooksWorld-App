@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('peminjamMain.home.index')
 
 @section('content')
     <div class="container">
@@ -34,15 +34,9 @@
                                 @endif
                             </td>
                             <td>
-                                @if ($detail->status == 'Menunggu ACC')
-                                    <a href="{{ route('peminjamanAdmin.update', $detail->id) }}" type="submit" onclick="confirm('Ingin menerima peminjaman?')" class="btn btn-danger">
-                                        <i class="fa-solid fa-xmark"></i>   
-                                    </a>
-                                @else
-                                    <a type="button" class="btn btn-success">
-                                        <i class="fa-solid fa-check"></i>
-                                    </a>
-                                @endif
+                                <a href="{{ route('peminjaman.update', $detail->id) }}" type="submit" onclick="confirm('Ingin menerima peminjaman?')" class="btn btn-danger">
+                                    Kembalikan  
+                                </a>
                             </td>
                         </tr>
                     @endforeach

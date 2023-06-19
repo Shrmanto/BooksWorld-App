@@ -31,7 +31,7 @@
               <a href="#hero" class="nav-link">Home</a>
             </li>
             <li class="nav-item">
-              <a href="#about" class="nav-link">Book</a>
+              <a href="#book" class="nav-link">Book</a>
             </li>
             <div class="nav-item">
               <a href="{{ route('register') }}" class="text-decoration-none">
@@ -99,7 +99,7 @@
             <div class="row text-center py-3">
             <div class="col-lg-6 m-auto">
                 <h1 class="h1">Books Recommended</h1>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod Lorem ipsum dolor sit amet.</p>
+                <p>Books World merekomendasikan buku-buku yang patut dibaca dan menjadi favorit para pengguna. Temukan inspirasi literatur terbaik, jelajahi kisah-kisah menarik, dan temukan dunia baru melalui pilihan kami.</p>
             </div>
             </div>
             <div class="row">

@@ -6,8 +6,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta name="description" content="">
   <meta name="author" content="">
-  <title>Dashboard</title>
+  <title>Dashboard -> Users</title>
   <!-- Custom fonts for this template-->
+  <link rel="apple-touch-icon" href="{{asset('assets/img/apple-touch-icon.png')}}">
+  <link rel="shortcut icon" type="image/x-icon" href="{{asset('assets/img/favicon.ico')}}">
   <link href="{{ asset('admin_assets/vendor/fontawesome-free/css/all.min.css') }}" rel="stylesheet" type="text/css">
   <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
   
@@ -37,26 +39,7 @@
   
         <!-- Begin Page Content -->
         <div class="container-fluid">
-  
-          <!-- Page Heading -->
-          <!-- <div class="d-sm-flex align-items-center justify-content-between mb-4">
-            <h1 class="h3 mb-0 text-gray-800">@yield('title')</h1>
-          </div>
-  
-          @yield('contents')
-   -->
-          <main role="main" class="main-content">
-            <div class="container-fluid">
-              <div class="row justify-content-center">
-                <div class="col-12">
-                    @yield('content')
-                </div> <!-- .col-12 -->
-              </div> <!-- .row -->
-            </div> <!-- .container-fluid -->
-          </main> <!-- main -->
-          <!-- Content Row -->
-  
-  
+            @yield('content')
         </div>
         <!-- /.container-fluid -->
   

@@ -1,7 +1,9 @@
 <?php
 
 use App\Models\Buku;
+use App\Models\Peminjam;
 use App\Models\Status;
+use App\Models\transaksi_detail;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 
@@ -30,9 +32,13 @@ Route::post('/register', [App\Http\Controllers\RegistController::class, 'create'
 
 // Admin
 Route::middleware('role:admin')->get('/dashboard', function () {
-    return view('layouts.app');
+    $peminjam = Peminjam::count();
+    $PeminjamanBuku = transaksi_detail::sum('jumlah_pinjam');
+    $totalBuku = Buku::count('jumlah');
+    // $persentaseTersisa = ($totalBuku - $PeminjamanBuku) / $totalBuku * 100;
+    // $persentaseTersisa = round($persentaseTersisa);
+    return view('home', compact('peminjam', 'PeminjamanBuku'));
 })->name('dashboard');
-Route::get('/dashhome', [App\Http\Controllers\HomeController::class, 'index'])->name('dashhome');
 
 Route::get('/admin', [App\Http\Controllers\AdminController::class, 'index'])->name('admin');
 Route::get('/peminjam', [App\Http\Controllers\PeminjamController::class, 'index'])->name('peminjam');
@@ -54,14 +60,14 @@ Route::put('/buku/{id}', [App\Http\Controllers\BukuController::class, 'update'])
 Route::get('/buku/{id}/delete', [App\Http\Controllers\BukuController::class, 'destroy'])->name('buku.delete');
 
 // Lihat Transaksi Peminjaman
-Route::get('/peminjaman', [App\Http\Controllers\Transaksi_DetailController::class, 'index'])->name('peminjaman');
+Route::get('/peminjamanAdmin', [App\Http\Controllers\Transaksi_DetailController::class, 'index'])->name('peminjamanAdmin');
 // ACC Peminjaman
-Route::get('/peminjaman/{id}/update', [App\Http\Controllers\Transaksi_DetailController::class, 'update'])->name('peminjaman.update');
+Route::get('/peminjamanAdmin/{id}/update', [App\Http\Controllers\Transaksi_DetailController::class, 'update'])->name('peminjamanAdmin.update');
 Route::get('/detailpeminjaman/{id}/detail', [App\Http\Controllers\Transaksi_DetailController::class, 'showDetail'])->name('detailpeminjaman.detail');
 
 // User
 Route::middleware('role:user')->get('/home', function () {
-    return view('peminjamMain.home.index');
+    return view('peminjamMain.home.home');
 })->name('home');
 
 // List Buku
@@ -75,6 +81,9 @@ Route::group(['prefix' => 'cart'], function () {
     Route::delete('/removefromcart/delete/{id}', [App\Http\Controllers\CartController::class, 'removeFromCart'])->name('removefromcart');
     Route::post('/pinjam', [App\Http\Controllers\CartController::class, 'pinjam'])->name('pinjam');
 });
+
+// Peminjaman
+Route::get('/peminjamanUser', [\App\Http\Controllers\Transaksi_DetailController::class, 'peminjaman'])->name('peminjamanUser');
 
 
 
