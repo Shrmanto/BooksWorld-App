@@ -72,7 +72,7 @@
         <div class="col-md-6 col-lg-3 pb-5">
           <div class="h-100 py-5 services-icon-wap shadow">
             <div class="h1 text-center"><i class="fa-solid fa-book"></i></div>
-            <h2 class="h5 mt-4 text-center">Delivery Services</h2>
+            <h2 class="h5 mt-4 text-center">Online Catalog Access</h2>
           </div>
         </div>
 
@@ -103,7 +103,7 @@
             </div>
             </div>
             <div class="row">
-            @foreach($buku as $bk)
+            @foreach($buku->take(4) as $bk)
             <div class="col-lg-3">
                 <div class="product-card position-relative">
                     <div class="image-holder">
@@ -140,7 +140,7 @@
           <div class="col-md-5 pt-5">
             <h2 class="h2 text-white pb-3 logo">BOOKSWORLD</h2>
             <ul class="list-unstyled text-light footer-link-list">
-              <li>  
+              <li>
                 <i class="fas fa-map-marker-alt fa-fw"></i>
                 Perpustakaan universitas di Jember, Jawa Timur
               </li>

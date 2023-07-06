@@ -92,6 +92,15 @@ class BukuController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
+    public function lihat($id)
+    {
+        //
+        $buku = Buku::findOrFail($id);
+        $kategori = Kategori::all();
+        $status = Status::all();
+        return view('buku.detail', compact('buku', 'kategori', 'status'));
+    }
+
     public function edit($id)
     {
         //

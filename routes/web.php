@@ -23,11 +23,8 @@ Route::get('/', function () {
     $status = Status::all();
     return view('welcome', compact('buku', 'status'));
 })->name('welcome');
-// Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('welcome');
-
 
 Auth::routes();
-// Route::post('/login', [App\Http\Controllers\LoginController::class, 'redirect'])->name('login-user');
 Route::post('/register', [App\Http\Controllers\RegistController::class, 'create'])->name('register-user');
 
 // Admin
@@ -35,9 +32,7 @@ Route::middleware('role:admin')->get('/dashboard', function () {
     $peminjam = Peminjam::count();
     $PeminjamanBuku = transaksi_detail::sum('jumlah_pinjam');
     $totalBuku = Buku::count('jumlah');
-    // $persentaseTersisa = ($totalBuku - $PeminjamanBuku) / $totalBuku * 100;
-    // $persentaseTersisa = round($persentaseTersisa);
-    return view('home', compact('peminjam', 'PeminjamanBuku'));
+    return view('home', compact('peminjam', 'PeminjamanBuku', 'totalBuku'));
 })->name('dashboard');
 
 Route::get('/admin', [App\Http\Controllers\AdminController::class, 'index'])->name('admin');
@@ -55,6 +50,7 @@ Route::get('/kategori/{id}/delete', [App\Http\Controllers\KategoriController::cl
 Route::get('/buku', [App\Http\Controllers\BukuController::class, 'index'])->name('buku');
 Route::get('/buku/create', [App\Http\Controllers\BukuController::class, 'create'])->name('buku.create');
 Route::post('/buku', [App\Http\Controllers\BukuController::class, 'store'])->name('buku.store');
+Route::get('/buku/{id}/lihat', [App\Http\Controllers\BukuController::class, 'lihat'])->name('buku.lihat');
 Route::get('/buku/{id}/edit', [App\Http\Controllers\BukuController::class, 'edit'])->name('buku.edit');
 Route::put('/buku/{id}', [App\Http\Controllers\BukuController::class, 'update'])->name('buku.update');
 Route::get('/buku/{id}/delete', [App\Http\Controllers\BukuController::class, 'destroy'])->name('buku.delete');
@@ -64,6 +60,9 @@ Route::get('/peminjamanAdmin', [App\Http\Controllers\Transaksi_DetailController:
 // ACC Peminjaman
 Route::get('/peminjamanAdmin/{id}/update', [App\Http\Controllers\Transaksi_DetailController::class, 'update'])->name('peminjamanAdmin.update');
 Route::get('/detailpeminjaman/{id}/detail', [App\Http\Controllers\Transaksi_DetailController::class, 'showDetail'])->name('detailpeminjaman.detail');
+
+// Reporting
+Route::get('report', [App\Http\Controllers\ReportController::class, 'index'])->name('report.show');
 
 // User
 Route::middleware('role:user')->get('/home', function () {

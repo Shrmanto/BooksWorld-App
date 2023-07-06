@@ -14,7 +14,6 @@
                         <th>Tanggal Pinjam</th>
                         <th>Tanggal Kembali</th>
                         <th>Status</th>
-                        <th>Aksi</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -32,11 +31,6 @@
                                 @else
                                     <span class="badge badge-success">{{ $detail->status }}</span>
                                 @endif
-                            </td>
-                            <td>
-                                <a href="{{ route('peminjaman.update', $detail->id) }}" type="submit" onclick="confirm('Ingin menerima peminjaman?')" class="btn btn-danger">
-                                    Kembalikan  
-                                </a>
                             </td>
                         </tr>
                     @endforeach

@@ -53,6 +53,9 @@
                                     @endif
                                 </td>
                                 <td>
+                                    <a href="{{ route('buku.lihat', $bk->id) }}" class="btn btn-sm btn-warning">
+                                        <i class="fa-solid fa-eye" style="color: #ffffff;"></i>
+                                    </a>
                                     <a href="{{ route('buku.edit', $bk->id) }}" class="btn btn-sm btn-success">
                                     <i class="fa-solid fa-pen-to-square" style="color: #ffffff;"></i>
                                     </a>

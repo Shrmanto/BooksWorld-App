@@ -24,7 +24,7 @@ class Transaksi_DetailController extends Controller
             ->join('buku', 'transaksi_detail.buku_id', 'buku.id')
             ->join('users', 'transaksi.user_id', 'users.id')
             ->get();
-    
+
         return view('peminjaman.index', compact('transaksi_detail'));
     }
 
@@ -38,10 +38,10 @@ class Transaksi_DetailController extends Controller
             ->join('users', 'transaksi.user_id', 'users.id')
             ->where('user_id', $userId)
             ->get();
-    
+
         return view('peminjamMain.peminjaman.index', compact('transaksi_detail'));
     }
-    
+
 
     /**
      * Show the form for creating a new resource.
@@ -105,21 +105,21 @@ class Transaksi_DetailController extends Controller
     public function update(Request $request, $id)
     {
         $transaksi = Transaksi::findOrFail($id);
-    
+
         if ($transaksi->status != 'ACC') {
             $transaksi->status = 'ACC';
-            
+
             // Mengatur tanggal kembali 3 hari setelah tanggal pinjam
             $tanggalPinjam = $transaksi->tanggal_pinjam;
             $tanggalKembali = date('Y-m-d', strtotime($tanggalPinjam. ' + 3 days'));
-            
+
             $transaksi->tanggal_kembali = $tanggalKembali;
-            
+
             $transaksi->save();
-            
+
             return redirect()->back()->with('success', 'Berhasil mengubah status menjadi ACC.');
         }
-        
+
         return redirect()->back()->with('error', 'Tidak dapat mengubah status menjadi ACC.');
     }
 

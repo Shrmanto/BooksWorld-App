@@ -36,7 +36,7 @@
                             <td>
                                 @if ($detail->status == 'Menunggu ACC')
                                     <a href="{{ route('peminjamanAdmin.update', $detail->id) }}" type="submit" onclick="confirm('Ingin menerima peminjaman?')" class="btn btn-danger">
-                                        <i class="fa-solid fa-xmark"></i>   
+                                        <i class="fa-solid fa-xmark"></i>
                                     </a>
                                 @else
                                     <a type="button" class="btn btn-success">
