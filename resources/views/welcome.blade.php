@@ -104,10 +104,10 @@
             </div>
             <div class="row">
             @foreach($buku->take(4) as $bk)
-            <div class="col-lg-3">
+            <div class="col-lg-3 col-md-6 mb-5 d-flex justify-content-center">
                 <div class="product-card position-relative">
                     <div class="image-holder">
-                        <img src="{{ asset('images/buku/'.$bk->image) }}" alt="product-item" class="img-fluid">
+                        <img src="{{ asset('images/buku/'.$bk->image) }}" alt="product-item" class="img-fluid" style="height: 380px">
                     </div>
                 <div class="card-detail d-flex justify-content-between align-items-baseline pt-2">
                     <h3 class="h5 card-title text-decoration-none mb-1">

@@ -44,14 +44,14 @@
 }
 
 .navbar-nav .nav-item .nav-link {
-    font-size: 20px;
+    font-size: 15px;
     font-weight: 400;
     margin-right: 1rem;
     color: #ffffff;
 }
 
 .navbar-nav .nav-item .nav-link:hover {
-    font-size: 20px;
+    font-size: 15px;
     font-weight: 400;
     color: #227c9d;
 }
